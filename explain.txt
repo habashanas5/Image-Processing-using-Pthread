@@ -1,0 +1,33 @@
+the final result will be in (for the serial in FinalOutPut.txt and for parallel in parallelfinalOutPut.txt)
+
+Class Structure:
+The ParallelFilter class encapsulates the image filtering functionality.
+The class takes as input the image, kernel, and parameters such as the number of rows, columns, and the desired number of threads for parallelization.
+
+Parallelization Strategy:
+The applyFilterParallel method parallelizes the convolution operation across multiple threads.
+Threads are created to process distinct rows of the image, distributing the workload evenly among them.
+Each thread calls the applyFilter method, processing a subset of rows independently.
+
+ThreadData Structure:
+A ThreadData structure is used to pass data to each thread, including a pointer to the ParallelFilter object, the result image array, and the range of rows to process.
+
+Timing Execution:
+The execution time is measured using the clock function before and after applying the parallel image filtering.
+The difference in clock times provides the total execution time, and the results are printed to the console.
+We needed one time for serial code , But we needed more time for each thread 
+
+Parameterization:
+The program takes input parameters from the command line, including the input image file, kernel file, output image file, and the number of threads for parallelization.
+
+Testing and Output:
+The program reads the input image and kernel files, processes them, and generates an output file containing the filtered image.
+The modified image is written to the output file, and timing data is printed to the console.
+
+Performance Evaluation:
+The program is executed with different thread counts (1 to maxThreads), and the execution time is recorded for each configuration.
+Speedup is calculated by comparing the parallel execution time with the serial execution time.
+
+Results and Observations:
+The execution time decreases as the number of threads increases, demonstrating the benefits of parallelization.
+Speedup is calculated by dividing the serial execution time by the parallel execution time, showing the performance improvement achieved by parallel processing.
